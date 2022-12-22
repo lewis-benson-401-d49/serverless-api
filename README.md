@@ -107,7 +107,14 @@ Everything should be ready to perform DB functions at this point.
 
 #### Features / Routes
 
+/friends  
+  - GET get all people
+  - POST create one person
 
+/friends/:id
+  - GET get one person
+  - PUT update one person
+  - DELETE delete one person
 
 #### Collaboration: I worked with Elias, Steven, and Seth to get out the primary function. 
 
