@@ -14,15 +14,16 @@ Create a fully RESTful application using the AWS Gateway, with DynamoDB and Dyna
 
 ### Links and Resources
 
-[Invoke URL](https://w4e42i2xic.execute-api.us-east-1.amazonaws.com/production)
+[Invoke URL](https://w4e42i2xic.execute-api.us-east-1.amazonaws.com/production/friends)
 This link returns
+
 ```js
 {
 "message": "Missing Authentication Token"
 }
 ```
-This is the same result as the [lab demo](https://3zl9q2okmd.execute-api.us-west-2.amazonaws.com/Production). 
 
+This is the same result as the [lab demo](https://3zl9q2okmd.execute-api.us-west-2.amazonaws.com/Production).
 
 ### Setup
 
