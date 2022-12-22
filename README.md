@@ -1,4 +1,7 @@
+<!-- @format -->
+
 # API- DYNAMO & LAMBDA
+
 # LAB - 401-D49 Lab-18
 
 ## Project: Restful API
@@ -13,13 +16,11 @@ Create a fully RESTful application using the AWS Gateway, with DynamoDB and Dyna
 
 [Invoke URL](https://w4e42i2xic.execute-api.us-east-1.amazonaws.com/production)
 
-
 ### Setup
 
 #### `.env` requirements (where applicable)
 
 There are no env requirements.
-
 
 #### How to initialize/run your application (where applicable)
 
@@ -33,13 +34,11 @@ Hover `databases` -> click on DynamoDB
 
 Click Create Table on the right,
 
-Put in a table name, and select the data type for the key. 
+Put in a table name, and select the data type for the key.
 
-click create at the bottom. 
-
+click create at the bottom.
 
 #### Steps Create a Get Lambda
-
 
 Click services on the nav bar.
 
@@ -59,68 +58,69 @@ Create the function
 const dynamoose = require('dynamoose');
 
 const schema = new dynamoose.Schema({
-  "id": Number,
-  "name": String,
-  "phone": String,
-})
+  id: Number,
+  name: String,
+  phone: String,
+});
 
 const friendsModel = dynamoose.model('friends', schema);
 
 exports.handler = async (event) => {
-     const response = {
+  const response = {
     statusCode: null,
     body: null,
-     };  
-  
-  try{
-       const id = +event.pathParameters.id;
-     const record = await friendsModel.get({id});
+  };
+
+  try {
+    const id = +event.pathParameters.id;
+    const record = await friendsModel.get({ id });
     response.statusCode = 200;
     response.body = JSON.stringify(record);
-  }catch(e){
+  } catch (e) {
     response.statusCode = 500;
     response.body = JSON.stringify(e.message);
     console.error(e.message);
   }
   return response;
 };
-
 ```
-
 
 #### Steps Setup permission
 
 Highlight Security, Identity, & Compliance -> Click IAM
 
-Click on roles. 
+Click on roles.
 
 You should see the role you created when you made the new lambda (see the name of the lambda function in the role name)
 
-Check the policy listed, and click attach policies 
+Check the policy listed, and click attach policies
 
 Add the customer-managed new lambda in the name
 
 attach AmazonDynamoFullAccess by searching Dynamo
 
-Everything should be ready to perform DB functions at this point. 
-
+Everything should be ready to perform DB functions at this point.
 
 #### Features / Routes
 
-/friends  
-  - GET get all people
-  - POST create one person
+/friends
+
+- GET get all people
+- POST create one person
 
 /friends/:id
-  - GET get one person
-  - PUT update one person
-  - DELETE delete one person
 
-#### Collaboration: I worked with Elias, Steven, and Seth to get out the primary function. 
+- GET get one person
+- PUT update one person
+- DELETE delete one person
+
+#### Collaboration: I worked with Elias, Steven, and Seth to get out the primary function.
 
 #### Tests
 
 - How do you run tests?
-On the lambda function console, click the test button with a items in the database in the bucket.
+  On the lambda function console, click the test button with a items in the database in the bucket.
 
 # cloud-server
+
+![uml](./assets/uml.png)
